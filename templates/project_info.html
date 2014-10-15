@@ -1,0 +1,27 @@
+<html>
+<head> </head>
+<body>
+
+    <table>
+        <thead> 
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>github</th>
+            <th>title</th>
+            <th>Description</th>
+            <th>Grade</th>
+            <th>Max Grade</th>
+        </thead>
+        
+            {% for row in project_info %}
+                <tr>
+                    {% for field in row %}
+                        <td>{{ field }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+            
+    </table>
+
+</body>
+</html>

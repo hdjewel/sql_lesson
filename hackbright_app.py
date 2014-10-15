@@ -48,9 +48,13 @@ def get_student_by_github(github):
     query = """SELECT first_name, last_name, github FROM Students WHERE github = ?"""
     DB.execute(query, (github,))
     row = DB.fetchone()
-    print """\
-Student: %s %s
-Github account: %s"""%(row[0], row[1], row[2])
+    return row
+
+def get_students_by_project(title):
+    query = """SELECT * FROM Student_Report_Card_View WHERE title = ?"""
+    DB.execute(query, (title,))
+    rows = DB.fetchall()
+    return rows
 
 def get_project(title):
     #this function will guery the projects dataset by title and return ??
@@ -86,17 +90,18 @@ def show_student_grades(github):
     query = """SELECT * FROM Student_Report_Card_View WHERE github=?"""
     DB.execute(query, (github,))
     rows = DB.fetchall()
-    print "Student Name\tgithub\tTitle\tDescription\tGrade\tMax Grade",
-    for row in rows:
-        # print_string = row[0]
-        # print "     ".join(row)
-        # tried to print with a join, but row tuple has mixed data types
-        print ("\n")
-        for i in range(len(row)):
-        #     print_string = print_string + "\t" + str(row[i])
-        # print print_string
-            print ("%s\t" % str(row[i]).strip()),
-    print ("\n")
+    return rows
+    # print "Student Name\tgithub\tTitle\tDescription\tGrade\tMax Grade",
+    # for row in rows:
+    #     # print_string = row[0]
+    #     # print "     ".join(row)
+    #     # tried to print with a join, but row tuple has mixed data types
+    #     print ("\n")
+    #     for i in range(len(row)):
+    #     #     print_string = print_string + "\t" + str(row[i])
+    #     # print print_string
+    #         print ("%s\t" % row[i]),
+    # print ("\n")
         
 
 def main():

@@ -1,0 +1,31 @@
+<html>
+<head> </head>
+<body>
+
+    <table>
+        <thead> 
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>github</th>
+            <th>title</th>
+            <th>Description</th>
+            <th>Grade</th>
+            <th>Max Grade</th>
+        </thead>
+        
+            {% for row in student_grades %}
+                <tr>
+                    {% for i in range(7)%}
+                        {% if i == 3 %}
+                            <td><a href="/project?title={{row[i]}}">{{ row[i] }}</a></td>
+                        {% else %}
+                            <td>{{ row[i] }}</td>
+                        {% endif %}
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+            
+    </table>
+
+</body>
+</html>
